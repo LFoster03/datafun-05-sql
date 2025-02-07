@@ -1,4 +1,4 @@
--- Insert 10 sample records into Customers
+-- Insert 10 customers
 INSERT INTO Customers (ID, Name, Email) VALUES
 (1, 'Alice Johnson', 'alice.johnson@example.com'),
 (2, 'Bob Smith', 'bob.smith@example.com'),
@@ -11,7 +11,7 @@ INSERT INTO Customers (ID, Name, Email) VALUES
 (9, 'Ian White', 'ian.white@example.com'),
 (10, 'Jane Doe', 'jane.doe@example.com');
 
--- Insert 10 sample records into Orders (make sure to associate them with CustomerIDs)
+-- Insert 10 orders (each associated with a customer)
 INSERT INTO Orders (OrderID, OrderDate, CustomerID) VALUES
 (1, '2025-02-01', 1),
 (2, '2025-02-02', 2),
