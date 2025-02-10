@@ -46,7 +46,7 @@ This project extends the functionality of the library database to perform variou
 ### 1. **update_records.sql**
 This SQL file updates records in the database. For example, the `publish_year` for the book "1984" is updated.
 
-```sql
+sql
 UPDATE books
 SET publish_year = 2023
 WHERE title = '1984';
@@ -100,5 +100,4 @@ This Python script executes the SQL queries and visualizes the data using `matpl
 1. Place the SQL queries (`query_aggregation.sql`, `query_filter.sql`, `query_sorting.sql`, `query_group_by.sql`, `query_join.sql`) and the Python script (`db03_queries.py`) in the appropriate folders.
 2. Install required Python libraries: `sqlite3` (for interacting with the database) and `matplotlib` (for visualizations).
 
-```bash
-pip install matplotlib
+# Added CSV files books.csv and authors.csv to a data file.
