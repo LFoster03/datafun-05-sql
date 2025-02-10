@@ -1,18 +1,11 @@
 -- query_join.sql
 
--- INNER JOIN: Join Orders and Customers based on CustomerID
-SELECT 
-    Orders.OrderID, 
-    Orders.OrderDate, 
-    Customers.CustomerName, 
-    Orders.OrderTotal
-FROM Orders
-INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+-- Get books with their authors' first and last names
+SELECT books.title, authors.first_name, authors.last_name
+FROM books
+INNER JOIN authors ON books.author_id = authors.author_id;
 
--- LEFT JOIN: Include customers without orders
-SELECT 
-    Customers.CustomerName, 
-    Orders.OrderID, 
-    Orders.OrderTotal
-FROM Customers
-LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+-- Get all books with authors, including authors without books (using LEFT JOIN)
+SELECT books.title, authors.first_name, authors.last_name
+FROM books
+LEFT JOIN authors ON books.author_id = authors.author_id;

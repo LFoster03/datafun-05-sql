@@ -1,4 +1,6 @@
--- Update an order's date
-UPDATE Orders
-SET OrderDate = '2025-03-01'
-WHERE OrderID = 1;
+-- update_records.sql
+
+-- Update the publish year for a specific book
+UPDATE books
+SET publish_year = 2023
+WHERE title = '1984';

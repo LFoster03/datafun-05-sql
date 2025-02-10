@@ -19,6 +19,9 @@ import pathlib
 # Imports from external packages
 from loguru import logger
 
+# Imports sqlite3
+import sqlite3
+
 # Get this file name without the extension
 CURRENT_SCRIPT = pathlib.Path(__file__).stem
 

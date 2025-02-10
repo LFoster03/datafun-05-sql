@@ -1,36 +1,40 @@
 import sqlite3
 import os
 
-# Define the database file (SQLite)
-db_file = "mydatabase.sqlite3"
+# Path to the database file
+db_file = 'library.setup.db'
 
-def create_database():
-    """Create a database, define the schema, and insert records."""
+# Function to run a SQL file
+def run_sql_file(cursor, filename):
+    with open(filename, 'r') as f:
+        sql = f.read()
+        cursor.executescript(sql)
 
-    # If the database exists, remove it to restart
+# Main function to set up the database
+def setup_database():
+    # Check if the database exists, and delete it if so
     if os.path.exists(db_file):
         os.remove(db_file)
 
-    # Connect to the SQLite database (it will be created)
+    # Create a new SQLite database
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
 
-    # Step 1: Drop existing tables (to restart)
-    with open('sql_create/01_drop_tables.sql', 'r') as file:
-        cursor.executescript(file.read())
+    try:
+        # Run the SQL scripts to create tables and insert records
+        run_sql_file(cursor, 'sql_create/01_drop_tables.sql')  # Drop tables if they exist
+        run_sql_file(cursor, 'sql_create/02_create_tables.sql')  # Create tables
+        run_sql_file(cursor, 'sql_create/03_insert_records.sql')  # Insert records
 
-    # Step 2: Create the tables (schema)
-    with open('sql_create/02_create_tables.sql', 'r') as file:
-        cursor.executescript(file.read())
+        # Commit changes and close the connection
+        conn.commit()
+        print("Database created and records inserted successfully.")
+    except sqlite3.Error as e:
+        print(f"Error occurred: {e}")
+        conn.rollback()
+    finally:
+        conn.close()
 
-    # Step 3: Insert records into tables
-    with open('sql_create/03_insert_records.sql', 'r') as file:
-        cursor.executescript(file.read())
-
-    # Commit changes and close the connection
-    conn.commit()
-    conn.close()
-    print("Database and tables created, and records inserted successfully.")
-
-if __name__ == "__main__":
-    create_database()
+# Run the setup function
+if __name__ == '__main__':
+    setup_database()

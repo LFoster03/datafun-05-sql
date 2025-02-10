@@ -1,14 +1,18 @@
--- Create the Customers table
-CREATE TABLE IF NOT EXISTS Customers (
-    ID INTEGER PRIMARY KEY,     -- Unique ID for each customer
-    Name TEXT NOT NULL,         -- Name of the customer
-    Email TEXT NOT NULL UNIQUE  -- Email address of the customer
+-- 02_create_tables.sql
+
+-- Create the authors table
+CREATE TABLE authors (
+    author_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    birth_date DATE
 );
 
--- Create the Orders table
-CREATE TABLE IF NOT EXISTS Orders (
-    OrderID INTEGER PRIMARY KEY,    -- Unique ID for each order
-    OrderDate TEXT NOT NULL,        -- The date the order was made
-    CustomerID INTEGER,             -- Foreign Key: ID of the customer
-    FOREIGN KEY (CustomerID) REFERENCES Customers(ID) -- Relationship between Orders and Customers
+-- Create the books table with a foreign key referencing authors
+CREATE TABLE books (
+    book_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    publish_year INTEGER NOT NULL,
+    author_id INTEGER,
+    FOREIGN KEY (author_id) REFERENCES authors (author_id)
 );

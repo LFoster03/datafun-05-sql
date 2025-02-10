@@ -1,3 +1,4 @@
--- Drop tables if they exist (necessary for re-running)
-DROP TABLE IF EXISTS Orders;
-DROP TABLE IF EXISTS Customers;
+-- 01_drop_tables.sql
+
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS authors;

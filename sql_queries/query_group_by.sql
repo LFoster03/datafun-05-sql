@@ -1,9 +1,13 @@
 -- query_group_by.sql
 
--- Group orders by CustomerID and calculate the total order amount for each customer
-SELECT 
-    CustomerID,
-    COUNT(OrderID) AS NumberOfOrders,
-    SUM(OrderTotal) AS TotalSpent
-FROM Orders
-GROUP BY CustomerID;
+-- Count the number of books per author
+SELECT authors.first_name, authors.last_name, COUNT(books.book_id) AS num_books
+FROM authors
+JOIN books ON authors.author_id = books.author_id
+GROUP BY authors.author_id;
+
+-- Get the average publish year of books per author
+SELECT authors.first_name, authors.last_name, AVG(books.publish_year) AS avg_publish_year
+FROM authors
+JOIN books ON authors.author_id = books.author_id
+GROUP BY authors.author_id;

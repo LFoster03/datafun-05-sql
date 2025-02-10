@@ -2,94 +2,103 @@
 Module 5 - learning SQL
 # Database Schema Design
 
-This database contains two tables: `Customers` and `Orders`.
+# Library Database Schema
 
-### Customers Table:
-- `ID` (INTEGER, Primary Key) - The unique identifier for each customer.
-- `Name` (TEXT) - The name of the customer.
-- `Email` (TEXT) - The customer's email address (unique).
+This project defines a simple database schema for a library system with two related tables: `authors` and `books`.
 
-### Orders Table:
-- `OrderID` (INTEGER, Primary Key) - The unique identifier for each order.
-- `OrderDate` (TEXT) - The date when the order was placed.
-- `CustomerID` (INTEGER, Foreign Key) - The reference to the `ID` from the `Customers` table. This establishes a one-to-many relationship between `Customers` and `Orders`.
+## Schema Design
 
-### Relationship:
-- Each **customer** can have multiple **orders**, but each **order** belongs to only one **customer**.
-- The `Orders` table has a foreign key (`CustomerID`) that links to the `Customers` table's `ID`.
+1. **authors** table:
+   - `author_id`: Primary key, integer, autoincrement.
+   - `first_name`: Text, the first name of the author.
+   - `last_name`: Text, the last name of the author.
+   - `birth_date`: Date, the birth date of the author.
 
-### How to Use:
-1. Clone or download the repository.
-2. Run the `db01_setup.py` script to set up the database and insert records.
-3. The database will be created with the `Customers` and `Orders` tables, populated with sample data.
+2. **books** table:
+   - `book_id`: Primary key, integer, autoincrement.
+   - `title`: Text, the title of the book.
+   - `publish_year`: Integer, the year the book was published.
+   - `author_id`: Foreign key, integer, references the `author_id` in the `authors` table.
 
-1. SQL Scripts
-The project includes the following SQL scripts, which are used to perform database operations:
+## SQL Files
 
-update_records.sql: This script is used to update one or more records in a table.
+1. **01_drop_tables.sql**: Drops the `authors` and `books` tables if they already exist.
+2. **02_create_tables.sql**: Creates the `authors` and `books` tables with a foreign key constraint.
+3. **03_insert_records.sql**: Inserts 10 records into the `authors` and `books` tables.
 
-Example: Updating the OrderDate of a specific OrderID in the Orders table.
-delete_records.sql: This script is used to delete one or more records from a table.
+## Python Script
 
-Example: Deleting all records in the Orders table for a specific CustomerID.
-2. Python Script
-db02_features.py: This Python script demonstrates how to execute the SQL scripts (update_records.sql and delete_records.sql) to perform updates and deletions. It also includes functions to query the database to verify changes after performing these operations.
+- **db01_setup.py**: A Python script that automates the creation of the database, schema, and insertion of records. Run this script to set up the database.
 
-# Database Queries and Analysis Project
+## Instructions
 
-This project demonstrates how to use SQL queries to perform various operations on a SQLite database, including aggregation, filtering, sorting, grouping, and joining. Additionally, the project utilizes Python to execute the SQL queries, summarize the results, and visualize the data.
+1. Install Python and SQLite3 on your machine.
+2. Place the `db01_setup.py` script and the `sql_create` folder (with the SQL files) in the same directory.
+3. Run the Python script by executing `python db01_setup.py` to create the database and insert records.
+4. The database will be created as `library.db` in the same directory.
 
-## Project Structure
+# Library Database Features
 
-1. Query aggregation
+This project extends the functionality of the library database to perform various operations such as updating records, deleting records, adding new columns, and querying data.
 
-## SQL Query Files
+## SQL Features
 
-### 1. `query_aggregation.sql`
-This SQL file demonstrates how to use aggregation functions such as `COUNT`, `AVG`, and `SUM` to summarize data. It helps analyze datasets by counting records, averaging values, and calculating totals.
-
-Example query:
+### 1. **update_records.sql**
+This SQL file updates records in the database. For example, the `publish_year` for the book "1984" is updated.
 
 ```sql
--- query_aggregation.sql
-SELECT 
-    COUNT(OrderID) AS TotalOrders,
-    AVG(OrderTotal) AS AverageOrderAmount,
-    SUM(OrderTotal) AS TotalSales
-FROM Orders;
+UPDATE books
+SET publish_year = 2023
+WHERE title = '1984';
 
-2. Query Filter
-This SQL file demonstrates filtering data using the WHERE clause. It allows you to query data based on specific conditions.
--- query_filter.sql
-SELECT * FROM Orders
-WHERE OrderTotal > 100;
+# Library Database Queries
 
-3. Query Sorting
-This SQL file demonstrates sorting data using the ORDER BY clause. You can sort data in ascending or descending order based on one or more columns.
--- query_sorting.sql
-SELECT * FROM Orders
-ORDER BY OrderDate DESC;
+This project demonstrates various SQL queries for aggregations, filtering, sorting, grouping, and joining data in an SQLite database. Additionally, Python is used to execute the SQL queries and visualize the results.
 
-4. Query Group By
-This SQL file demonstrates grouping data using the GROUP BY clause, often with aggregation functions like COUNT or SUM, to summarize data at a group level (e.g., by customer or category).
--- query_group_by.sql
-SELECT 
-    CustomerID,
-    COUNT(OrderID) AS NumberOfOrders,
-    SUM(OrderTotal) AS TotalSpent
-FROM Orders
-GROUP BY CustomerID;
+# Library Database Queries
 
-5. Query Join
-This SQL file demonstrates joining tables using the INNER JOIN and LEFT JOIN clauses. It allows you to combine data from multiple tables based on a related column.
--- query_join.sql
-SELECT 
-    Orders.OrderID, 
-    Orders.OrderDate, 
-    Customers.CustomerName, 
-    Orders.OrderTotal
-FROM Orders
-INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+This project demonstrates various SQL queries for aggregations, filtering, sorting, grouping, and joining data in an SQLite database. Additionally, Python is used to execute the SQL queries and visualize the results.
 
-6. Python Script (db03_queries.py)
-This Python script demonstrates how to run the SQL queries defined above, execute them on a SQLite database, and summarize or visualize the results.
+## SQL Queries
+
+### 1. **query_aggregation.sql**
+Performs aggregation functions:
+- `COUNT()`: Counts the number of books in the database.
+- `AVG()`: Computes the average publish year of books.
+- `SUM()`: Sums the publish years (for demonstration).
+
+### 2. **query_filter.sql**
+Filters records using the `WHERE` clause:
+- Books published after 1950.
+- Books written by a specific author (e.g., 'J.K. Rowling').
+
+### 3. **query_sorting.sql**
+Sorts records using the `ORDER BY` clause:
+- Books sorted by publish year in ascending order.
+- Books sorted by title in descending order.
+
+### 4. **query_group_by.sql**
+Groups records by author and performs aggregation:
+- Counts the number of books per author.
+- Computes the average publish year of books per author.
+
+### 5. **query_join.sql**
+Joins the `books` and `authors` tables:
+- Retrieves books along with their authors' names using `INNER JOIN`.
+- Retrieves all books along with authors, including authors without books (using `LEFT JOIN`).
+
+## Python Script
+
+### db03_queries.py
+This Python script executes the SQL queries and visualizes the data using `matplotlib`.
+
+- It runs aggregation queries, filter queries, sorting queries, grouping queries, and join queries.
+- It visualizes the number of books per author with a bar chart.
+
+## Instructions
+
+1. Place the SQL queries (`query_aggregation.sql`, `query_filter.sql`, `query_sorting.sql`, `query_group_by.sql`, `query_join.sql`) and the Python script (`db03_queries.py`) in the appropriate folders.
+2. Install required Python libraries: `sqlite3` (for interacting with the database) and `matplotlib` (for visualizations).
+
+```bash
+pip install matplotlib
