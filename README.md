@@ -100,4 +100,4 @@ This Python script executes the SQL queries and visualizes the data using `matpl
 1. Place the SQL queries (`query_aggregation.sql`, `query_filter.sql`, `query_sorting.sql`, `query_group_by.sql`, `query_join.sql`) and the Python script (`db03_queries.py`) in the appropriate folders.
 2. Install required Python libraries: `sqlite3` (for interacting with the database) and `matplotlib` (for visualizations).
 
-# Added CSV files books.csv and authors.csv to a data file.
+## Added CSV files books.csv and authors.csv to a data file.
