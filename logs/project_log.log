@@ -26,3 +26,31 @@
 2025-02-10 09:04:47.062 | ERROR    | __main__:log_example:59 - This is an example error message.
 2025-02-10 09:04:47.062 | INFO     | __main__:main:71 - View the log output at logs/project_log.log
 2025-02-10 09:04:47.062 | INFO     | __main__:main:72 - EXITING utils_logger.py.
+2025-02-10 13:56:43.824 | INFO     | __main__:<module>:44 - Logging to file: logs/project_log.log
+2025-02-10 13:56:43.824 | INFO     | __main__:main:66 - STARTING utils_logger.py
+2025-02-10 13:56:43.824 | INFO     | __main__:log_example:57 - This is an example info message.
+2025-02-10 13:56:43.824 | WARNING  | __main__:log_example:58 - This is an example warning message.
+2025-02-10 13:56:43.824 | ERROR    | __main__:log_example:59 - This is an example error message.
+2025-02-10 13:56:43.824 | INFO     | __main__:main:71 - View the log output at logs/project_log.log
+2025-02-10 13:56:43.824 | INFO     | __main__:main:72 - EXITING utils_logger.py.
+2025-02-10 14:05:11.672 | INFO     | __main__:<module>:44 - Logging to file: logs/project_log.log
+2025-02-10 14:05:11.672 | INFO     | __main__:main:66 - STARTING utils_logger.py
+2025-02-10 14:05:11.672 | INFO     | __main__:log_example:57 - This is an example info message.
+2025-02-10 14:05:11.672 | WARNING  | __main__:log_example:58 - This is an example warning message.
+2025-02-10 14:05:11.672 | ERROR    | __main__:log_example:59 - This is an example error message.
+2025-02-10 14:05:11.672 | INFO     | __main__:main:71 - View the log output at logs/project_log.log
+2025-02-10 14:05:11.672 | INFO     | __main__:main:72 - EXITING utils_logger.py.
+2025-02-10 19:37:51.878 | INFO     | __main__:<module>:44 - Logging to file: logs/project_log.log
+2025-02-10 19:37:51.879 | INFO     | __main__:main:66 - STARTING utils_logger.py
+2025-02-10 19:37:51.879 | INFO     | __main__:log_example:57 - This is an example info message.
+2025-02-10 19:37:51.879 | WARNING  | __main__:log_example:58 - This is an example warning message.
+2025-02-10 19:37:51.879 | ERROR    | __main__:log_example:59 - This is an example error message.
+2025-02-10 19:37:51.879 | INFO     | __main__:main:71 - View the log output at logs/project_log.log
+2025-02-10 19:37:51.879 | INFO     | __main__:main:72 - EXITING utils_logger.py.
+2025-02-12 11:29:33.417 | INFO     | __main__:<module>:44 - Logging to file: logs/project_log.log
+2025-02-12 11:29:33.417 | INFO     | __main__:main:66 - STARTING utils_logger.py
+2025-02-12 11:29:33.417 | INFO     | __main__:log_example:57 - This is an example info message.
+2025-02-12 11:29:33.417 | WARNING  | __main__:log_example:58 - This is an example warning message.
+2025-02-12 11:29:33.417 | ERROR    | __main__:log_example:59 - This is an example error message.
+2025-02-12 11:29:33.417 | INFO     | __main__:main:71 - View the log output at logs/project_log.log
+2025-02-12 11:29:33.417 | INFO     | __main__:main:72 - EXITING utils_logger.py.
